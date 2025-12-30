@@ -1,3 +1,3 @@
-This repository provides R code implementing the Functional syhthetic control methods. 
+This repository provides R code implementing the functional syhthetic control methods. 
 
 
