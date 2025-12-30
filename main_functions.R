@@ -4,6 +4,7 @@
 
 source("helper_functions.R")
 
+
 ## =======================
 ## Implement the FSC method
 ## =======================
@@ -50,6 +51,7 @@ FSCM <- function(func_vals_list, T_0){
   weight_scm <- my_lsqlincon(C = C_mat, d = d_vec, Aeq = Aeq_mat, beq = beq_vec, lb=lb_vec)
   return(round(weight_scm, 4))
 }
+
 
 ## =======================
 ## Implement ridge augmented FSC with cubic B-splines
@@ -122,6 +124,7 @@ FSCM_aug <- function(func_vals_list, T_0, K, lambda, grids){
   return(weight_aug)
 }
 
+
 ## =======================
 ## Select the hyperparameter lambda by cross-validation (CV)
 ## =======================
@@ -161,6 +164,7 @@ cross_val <- function(lambda, func_vals_list, T_0, K, grids){
   sum(error_vals)
 }
 
+
 ## =======================
 ## Implement the placebo permutation test using the augmented FSC
 ## =======================
@@ -199,6 +203,7 @@ placebo <- function(func_vals_list, T_0, K, grids, post_period, a, b){
 
   d_vals
 }
+
 
 ## =======================
 ## implement the augmented geodesic synthetic control
@@ -251,6 +256,7 @@ geodesic_OT <- function(func_vals_list, func_vals_list_post, T_0){
   return(est)
 }
 
+
 ## =======================
 ## ridge augmented FSC when the outcomes are covariance matrices
 ## =======================
@@ -302,6 +308,7 @@ FSCM_aug_covmat <- function(func_vals_list, T_0, lambda, grids){
   return(weight_aug)
 }
 
+
 ## =======================
 ## select hyperparameter in the ridge augmented FSC when outcomes are covariance matrices
 ## =======================
@@ -337,6 +344,7 @@ cross_val_covmat <- function(lambda, func_vals_list, T_0, grids){
   # compute error
   sum(error_vals)
 }
+
 
 ## =======================
 ## placebo permutation test using the augmented FSC when outcomes are covariance matrices

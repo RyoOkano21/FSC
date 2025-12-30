@@ -6,6 +6,7 @@ load("asfr.RData")
 source("main_functions.R")
 library(tidyverse)
 
+
 ## =======================
 ## Extract information of data
 ## =======================
@@ -15,6 +16,7 @@ N <- length(func_vals_list) # the number of units
 T <- length(func_vals_list[[1]]) # the number of periods
 M <- length(func_vals_list[[1]][[1]]) # the number of grids
 T_0 <- 16 # the number of pre-treatment periods
+
 
 ## =======================
 ## Plot raw data 
@@ -59,10 +61,10 @@ my_plot <- ggplot(data =overall_tbl, mapping = aes(x = age, y=asfr, group = id))
   theme(legend.position = "top", text = element_text(size = 20))
 my_plot
 
+
 ## =======================
 ## Implement FSC 
 ## =======================
-
 # implement FSC method
 weight_fscm <- FSCM(func_vals_list, T_0)
 
@@ -83,6 +85,7 @@ for(t in 1:T_0){
   fit_values_scm[t] <- sum(diffs[-1])
 }
 round(sqrt(sum(fit_values_scm)), 4)
+
 
 ## =======================
 ## Implement Augmented FSC
@@ -116,6 +119,7 @@ for(t in 1:T_0){
   fit_values_aug[t] <- sum(diffs)
 }
 sqrt(sum(fit_values_aug))
+
 
 ## =======================
 ## Plot the observed outcomes and synthetic outcomes (1956 to 1963)
@@ -151,6 +155,7 @@ synthetic_plot <-
   theme(legend.position = "bottom", text = element_text(size = 20))
 synthetic_plot
 
+
 ## =======================
 ## plot the observed outcomes and synthetic outcomes (1964 to 1975) 
 ## =======================
@@ -185,6 +190,7 @@ synthetic_plot <-
   labs(x="Age", y="ASFR") +
   theme(legend.position = "bottom", text = element_text(size = 20))
 synthetic_plot
+
 
 ## =======================
 ## plot prediction bands for causal effects
@@ -235,6 +241,7 @@ prediction_plot <- ggplot(data=prediction_tibble, aes(x = x, y = est)) +
         text = element_text(size = 20)
   )
 prediction_plot
+
 
 ## =======================
 ## placebo permutation test (very slow)

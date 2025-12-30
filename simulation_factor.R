@@ -5,6 +5,7 @@
 source("main_functions.R")
 library(tidyverse)
 
+
 ## =======================
 ## Settings
 ## =======================
@@ -31,6 +32,7 @@ for(t in 1:T){
 
 # generate factor loadings
 phi_mat <- matrix(rnorm(N*J), nrow= N, ncol=J)
+
 
 ## =======================
 ##  Monte Carlo simulations
@@ -98,6 +100,7 @@ for(c in c(1, 2, 3)){
   }
   error_box_list[[c]] <- error_box
 }
+
 
 ## =======================
 ## Plot the results

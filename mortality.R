@@ -12,6 +12,7 @@ library(frechet)
 Density_list <- AaD_Density_list
 Quant_list <- AaD_Quant_list
 
+
 ## =======================
 ## Extract information of data
 ## =======================
@@ -21,6 +22,7 @@ N <- length(func_vals_list) # the number of units
 T <- length(func_vals_list[[1]]) # the number of periods
 M <- length(func_vals_list[[1]][[1]]) # the number of grids
 T_0 <- 21 # the number of pre-treatment periods
+
 
 ## =======================
 ## Plot raw data (quantile functions)
@@ -61,6 +63,7 @@ my_plot <- ggplot(data = overall_tbl, mapping = aes(x = grids, y=quants, group =
   scale_x_continuous(breaks = c(0, 0.25, 0.5, 0.75, 1), labels = c("0", "0.25", "0.5", "0.75", "1"))
 my_plot
 
+
 ## =======================
 ## Plot raw data (density functions) 
 ## =======================
@@ -99,6 +102,7 @@ my_plot <- ggplot(data = overall_tbl, mapping = aes(x = age, y=dens, group = id)
   theme(legend.position = "top", text = element_text(size = 20))
 my_plot
 
+
 ## =======================
 ## Implement FSC
 ## =======================
@@ -129,6 +133,7 @@ for(t in 1:T_0){
   fit_values_scm[t] <- sum(diffs[-1])
 }
 sqrt(sum(fit_values_scm))
+
 
 ## =======================
 ## Implement Augmented FSC
@@ -166,6 +171,7 @@ for(t in 1:T_0){
 }
 sqrt(sum(fit_values_aug))
 
+
 ## =======================
 ## Plot the observed and synthetic quantile functions (1970 to 1984)
 ## =======================
@@ -197,6 +203,7 @@ synthetic_plot <-
   scale_x_continuous(breaks = c(0, 0.25, 0.5, 0.75, 1), labels = c("0", "0.25", "0.5", "0.75", "1"))
 synthetic_plot
 
+
 ## =======================
 ## Plot the observed and synthetic quantile functions (1985 to 1999)
 ## =======================
@@ -227,6 +234,7 @@ synthetic_plot <-
   theme(legend.position = "bottom", text = element_text(size = 20)) +
   scale_x_continuous(breaks = c(0, 0.25, 0.5, 0.75, 1), labels = c("0", "0.25", "0.5", "0.75", "1"))
 synthetic_plot
+
 
 ## =======================
 ## Plot the observed and synthetic density functions
@@ -262,6 +270,7 @@ synthetic_dens_plot <-
   labs(x="Age (years)", y="Density") +
   theme(legend.position = "bottom", text = element_text(size = 20))
 synthetic_dens_plot
+
 
 ## =======================
 ## Plot prediction bands for causal effects
@@ -315,6 +324,7 @@ prediction_plot_aug <- ggplot(data=prediction_tibble, aes(x = x, y = est)) +
   scale_x_continuous(breaks = c(0, 0.25, 0.5, 0.75, 1), labels = c("0", "0.25", "0.5", "0.75", "1")) +
   scale_y_continuous(limits = c(-30, 10))
 prediction_plot_aug
+
 
 ## =======================
 ## placebo permutation test (very slow)

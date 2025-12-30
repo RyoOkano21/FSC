@@ -5,6 +5,7 @@
 source("main_functions.R")
 library(tidyverse)
 
+
 ## =======================
 ## Setting
 ## =======================
@@ -13,6 +14,7 @@ T_0 <- 9
 T <- T_0+1
 grids <- seq(0.01, 0.99, length=100)
 M <- length(grids)
+
 
 ## =======================
 ## Generate pre-treatment outcomes
@@ -25,10 +27,12 @@ for(i in 1:N){
   }
 }
 
+
 ## =======================
 ## Implement FSC
 ## =======================
 weight_fscm <- FSCM(func_vals_list, T_0)
+
 
 ## =======================
 ## Implement augmented FSC
@@ -45,6 +49,7 @@ lambda_opt <- as.numeric(optimise(obj_func, interval = c(0, 10000))[1])
 weight_aug_1 <- FSCM_aug(func_vals_list, T_0, K = K, lambda = lambda_opt*100, grids = grids)
 weight_aug_2 <- FSCM_aug(func_vals_list, T_0, K = K, lambda = lambda_opt, grids = grids)
 weight_aug_3 <- FSCM_aug(func_vals_list, T_0, K = K, lambda = lambda_opt/100, grids = grids)
+
 
 ## =======================
 ## Monte Carlo simulation
@@ -160,6 +165,7 @@ for(m in 1:n_sim){
   print(m)
 }
 mat_1.0 <- error_box
+
 
 ## =======================
 ##  Plot the results

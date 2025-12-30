@@ -6,6 +6,7 @@ library(pracma)
 library(cubicBsplines)
 library(Rearrangement)
 
+
 ## =======================
 ## Modified lsqlincon() to conduct stabilized optimizations
 ## =======================
@@ -116,6 +117,7 @@ inner_vals <- function(coef_func, func_vals, grids){
   return(vals_vec_func)
 }
 
+
 ## =======================
 ## Generate error terms in simulations
 ## =======================
@@ -130,6 +132,7 @@ error_generate_unif <- function(grids, C){
   return(error_vals)
 }
 
+
 ## =======================
 ## Transform quantile functions to density functions
 ## =======================
@@ -138,6 +141,7 @@ quant_dens <- function(quant_vals, grids, L, grid_density){
   samples <- approx(x=grids, y=quant_vals, xout=unif_grids)
   CreateDensity(y = samples$y, optns = list(outputGrid=grid_density))$y
 }
+
 
 ## =======================
 ## Basis functions used in simulations
@@ -150,6 +154,7 @@ phi <- function(j, u){
     sqrt(2)*cos((j-1)*pi*u)
   }
 }
+
 
 ## =======================
 ## Generate values of a function for simulation
@@ -167,6 +172,7 @@ X_generate <- function(grid, K){
   return(vals/100)
 }
 
+
 ## =======================
 ## Coefficient functions of autoregressive models used in simulations
 ## =======================
@@ -179,6 +185,7 @@ coef_func_2 <- function(x, y){
 coef_func_3 <- function(x, y){
   dnorm(y, x, sd=0.1)*0.1
 }
+
 
 ## =======================
 ## Generate values of a function for simulation

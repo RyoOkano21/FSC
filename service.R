@@ -11,6 +11,7 @@ library(tidyverse)
 library(Matrix)
 library(expm)
 
+
 ## =======================
 ## Extract information of data
 ## =======================
@@ -21,6 +22,7 @@ T_0 <-  29
 M <- length(func_vals_list[[1]][[1]]) # the number of grids
 num_com <- 9 #the number of service categories
 grids <- seq(0.01, 0.99, length=M) # the number of grids
+
 
 ## =======================
 ## Implement FSC
@@ -80,6 +82,7 @@ for(t in 1:T_0){
 }
 sqrt(sum(fit_values_aug))
 
+
 ## =======================
 ## Convert synthetic vectors to matrices
 ## =======================
@@ -101,6 +104,7 @@ for(t in 1:T){
   temp_mat_sym <- temp_mat - diag(diag(temp_mat)/2)
   ascm_outcomes_mat[[t]] <- nearPD(temp_mat_sym, base.matrix=TRUE)$mat
 }
+
 
 ## =======================
 ## Plot the differences between observed and FSC outcomes (2009Q1 to 2014Q4) 
@@ -145,6 +149,7 @@ causal_est_plot <- ggplot(df_cov, aes(x = Var1, y = Var2, fill = value)) +
         ))
 causal_est_plot
 
+
 ## =======================
 ##  Plot the differences between observed and FSC outcomes (2015Q1 to 2017Q2) 
 ## =======================
@@ -183,6 +188,7 @@ causal_est_plot <- ggplot(df_cov, aes(x = Var1, y = Var2, fill = value)) +
         ))
 causal_est_plot
 
+
 ## =======================
 ## plot the differences between observed and FSC outcomes (2017Q3 to 2018Q2)
 ## =======================
@@ -219,6 +225,7 @@ causal_est_plot <- ggplot(df_cov, aes(x = Var1, y = Var2, fill = value)) +
           vjust = 0.5
         ))
 causal_est_plot
+
 
 ## =======================
 ## plot the differences between observed and AFSC outcomes (2009Q1 to 2014Q4)
@@ -262,6 +269,7 @@ causal_est_plot <- ggplot(df_cov, aes(x = Var1, y = Var2, fill = value)) +
         ))
 causal_est_plot
 
+
 ## =======================
 ## plot the differences between observed and AFSC outcomes (2015Q1 to 2017Q2)
 ## =======================
@@ -300,6 +308,7 @@ causal_est_plot <- ggplot(df_cov, aes(x = Var1, y = Var2, fill = value)) +
         ))
 causal_est_plot
 
+
 ## =======================
 ## plot the differences between observed and AFSC outcomes (2017Q3 to 2018Q2)
 ## =======================
@@ -336,6 +345,7 @@ causal_est_plot <- ggplot(df_cov, aes(x = Var1, y = Var2, fill = value)) +
           vjust = 0.5
         ))
 causal_est_plot
+
 
 ## =======================
 ## Plot prediction bands for causal effects
@@ -447,6 +457,7 @@ causal_upper_plot <- ggplot(df_cov, aes(x = Var1, y = Var2, fill = value)) +
           vjust = 0.5
         ))
 causal_upper_plot
+
 
 ## =======================
 ## placebo permutation test (very slow)
