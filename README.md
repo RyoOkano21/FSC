@@ -15,4 +15,8 @@ This repository includes the following files, which can be used to replicate the
 - `service.R`: Script to replicate the empirical illustration in Section 6.3
 - `service.RData`: Dataset used in `service.R`
 
+The dataset in `asfr.RData` is downloaded from the Human Fertility Database (https://www.humanfertility.org).
+The dataset in `mortality.R` is downloaded from the Human Mortality Database (https://www.mortality.org). 
+The dataset in `service.R` is downloaded from UN Trade and Development (https://unctad.org).
+
 
