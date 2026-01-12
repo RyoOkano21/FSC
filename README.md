@@ -1,6 +1,6 @@
 This repository provides R code implementing the **functional synthetic control (FSC)** methods proposed in the following paper:
 
-Okano, R. and Kurisu, D. (2026). Functional Synthetic Control Methods for Metric Space-Valued Outcomes. *arXiv*.
+Okano, R. and Kurisu, D. (2026). Functional Synthetic Control Methods for Metric Space-Valued Outcomes. *arXiv preprint*.
 
 This repository includes the following files, which can be used to replicate the results reported in the paper:
 
